@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - سامانه ی برنامه ریز آراد</title>
+    @Scripts.Render("~/bundles/modernizr")
+    @Styles.Render("~/Content/css")
+</head>
+
+<body dir="rtl">
+
+    <header>
+        <div class="placeholder">
+            <div class="name">@Html.ActionLink("سامانه ی برنامه ریز آراد", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })</div>
+            <div class="logo">پنل مدیریت پروژه </div>
+            <nav>
+                <ul>
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li>
+                        <a href="#">Menu 2</a>
+                        <ul>
+                            <li><a href="#">SubMenu 2 - 1</a></li>
+                            <li><a href="#">SubMenu 2 - 2</a></li>
+                            <li><a href="#">SubMenu 2 - 3</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Menu 3</a></li>
+                    <li>
+                        <a href="#">Menu 4</a>
+                        <ul>
+                            <li><a href="#">SubMenu 4 - 1</a></li>
+                            <li>
+                                <a href="#">SubMenu 4 - 2</a>
+                                <ul>
+                                    <li><a href="#">SubMenu 4 - 2 - 1</a></li>
+                                    <li><a href="#">SubMenu 4 - 2 - 2</a></li>
+                                    <li><a href="#">SubMenu 4 - 2 - 3</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#">SubMenu 4 - 3</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Menu 5</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="placeholder" style="overflow-x:scroll;">
+        <div id="app">
+            <div>
+                <div class="title">» سلام دنیا</div>
+            </div>
+            <div>test</div>
+            @RenderBody()
+        </div>
+    </div>
+    <footer>
+        <div class="placeholder">
+            <div>۱۳۹۶ &copy; تمام حقوق محفوظ است</div>
+            <div>پیشگامان اطلاعات آراد</div>
+        </div>
+    </footer>
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
