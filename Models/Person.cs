@@ -8,22 +8,11 @@ namespace ATM.Models
 
     public partial class Person
     {
-        public Guid Id { get; set; }
-
-        [Required]
-        [StringLength(50)]
-        public string Username { get; set; }
-
-        [Required]
-        [StringLength(4000)]
-        public string Password { get; set; }
-
-        [StringLength(150)]
-        public string Firstname { get; set; }
-
-        [StringLength(150)]
-        public string Lastname { get; set; }
-
-        public Guid? PictureFileId { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Person()
+        {
+            Memberships = new HashSet<Membership>();
+            Projects = new HashSet<Project>();
+        }
     }
 }

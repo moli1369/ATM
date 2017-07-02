@@ -19,6 +19,26 @@ namespace ATM.Models
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Person>()
+                .HasMany(e => e.Memberships)
+                .WithRequired(e => e.Person)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Person>()
+                .HasMany(e => e.Projects)
+                .WithRequired(e => e.Person)
+                .HasForeignKey(e => e.OwnerId)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Project>()
+                .HasMany(e => e.Tasks)
+                .WithRequired(e => e.Project)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Task>()
+                .HasMany(e => e.Memberships)
+                .WithRequired(e => e.Task)
+                .WillCascadeOnDelete(false);
         }
     }
 }

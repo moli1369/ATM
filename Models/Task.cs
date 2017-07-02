@@ -8,6 +8,12 @@ namespace ATM.Models
 
     public partial class Task
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Task()
+        {
+            Memberships = new HashSet<Membership>();
+        }
+
         public Guid Id { get; set; }
 
         [Required]
@@ -20,5 +26,12 @@ namespace ATM.Models
         public DateTime Start { get; set; }
 
         public DateTime End { get; set; }
+
+        public Guid ProjectId { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Membership> Memberships { get; set; }
+
+        public virtual Project Project { get; set; }
     }
 }

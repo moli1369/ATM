@@ -7,6 +7,7 @@
     <title>@ViewBag.Title - سامانه ی برنامه ریز آراد</title>
     @Scripts.Render("~/bundles/modernizr")
     @Styles.Render("~/Content/css")
+    <link href="/Content/@HttpContext.Current.Request.RequestContext.RouteData.Values["controller"].ToString()/@ViewContext.RouteData.Values["action"].ToString()" rel="stylesheet" />
 </head>
 
 <body dir="rtl">
@@ -14,7 +15,7 @@
     <header>
         <div class="placeholder">
             <div class="name">@Html.ActionLink("سامانه ی برنامه ریز آراد", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })</div>
-            <img class="logo" src="~/Arad.jpg" alt="پیشگامان اطلاعات آراد"/>
+            <img class="logo" src="~/Arad.jpg" alt="پیشگامان اطلاعات آراد" />
             <nav>
                 <ul>
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
@@ -56,7 +57,7 @@
 
     <div class="placeholder" style="overflow-x:scroll;">
         <div id="app">
-            @Html.Partial("Register", "Home")
+            @Html.Action("Register", "Home",new { partial = true})
             <div>test</div>
             @RenderBody()
         </div>
@@ -68,8 +69,8 @@
         </div>
     </footer>
 
-
     @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
     @RenderSection("scripts", required: false)
 </body>
 </html>

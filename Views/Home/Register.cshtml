@@ -1,7 +1,36 @@
-﻿@{
+﻿@model ATM.Models.Person
+
+@{
     ViewBag.Title = "ثبت نام";
 }
 <div>
-    @*Html.ActionLink("ثبت نام", "Register", "Home", new object { }, new { @class = "title" })*@
-    <span class="title">ثبت نام</span>
+    <span class="title"> ثبت نام</span>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true, "", new { @class = "warning" })
+
+        @Html.LabelFor(model => model.Username)
+        @Html.EditorFor(model => model.Username)
+        @Html.ValidationMessageFor(model => model.Username, "", new { @class = "warning" })
+
+        @Html.LabelFor(model => model.Password)
+        @Html.EditorFor(model => model.Password)
+        @Html.ValidationMessageFor(model => model.Password, "", new { @class = "warning" })
+
+        @Html.LabelFor(model => model.Firstname)
+        @Html.EditorFor(model => model.Firstname)
+        @Html.ValidationMessageFor(model => model.Firstname, "", new { @class = "warning" })
+
+        @Html.LabelFor(model => model.Lastname)
+        @Html.EditorFor(model => model.Lastname)
+        @Html.ValidationMessageFor(model => model.Lastname, "", new { @class = "warning" })
+
+        @Html.LabelFor(model => model.PictureFileId)
+        @Html.EditorFor(model => model.PictureFileId)
+        @Html.ValidationMessageFor(model => model.PictureFileId, "", new { @class = "warning" })
+
+        <input type="submit" value="ثبت نام" />
+    }
 </div>

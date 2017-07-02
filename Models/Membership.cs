@@ -13,5 +13,9 @@ namespace ATM.Models
         public Guid TaskId { get; set; }
 
         public Guid PersonId { get; set; }
+
+        public virtual Person Person { get; set; }
+
+        public virtual Task Task { get; set; }
     }
 }

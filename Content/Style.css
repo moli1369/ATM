@@ -72,17 +72,24 @@ nav li li {
 nav li li:first-child{
 	margin-left:calc((100% - 1024px) / 2 );
 }
-button{
-	background:#b71c1c;
-	color:white;
-	padding:10px 30px;
-	outline:none;
-	border:none;
-	box-shadow:inset 0px  -100px 0px #c62828;
-	transition:.4s;
+label {
+    color: #b71c1c;
 }
-button:hover {
+button, input {
+    background: #b71c1c;
+    color: white;
+    padding: 10px 30px;
+    outline: none;
+    border: none;
+    box-shadow: inset 0px -100px 0px #c62828;
+    transition: .4s;
+    margin: .1em;
+}
+button:hover, input:hover, input:focus {
 	box-shadow:inset 0px  -0px 0px #c62828;
+}
+form input, form label{
+    display:block;
 }
 #app{
 	display:flex;
