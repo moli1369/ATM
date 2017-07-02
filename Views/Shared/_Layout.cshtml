@@ -47,14 +47,16 @@
                     <li><a href="#">Menu 5</a></li>
                 </ul>
             </nav>
+            @if (ViewBag.Message != null)
+            {
+                <div class="message">@ViewBag.Message</div>
+            }
         </div>
     </header>
 
     <div class="placeholder" style="overflow-x:scroll;">
         <div id="app">
-            <div>
-                <div class="title">» سلام دنیا</div>
-            </div>
+            @Html.Partial("Register", "Home")
             <div>test</div>
             @RenderBody()
         </div>

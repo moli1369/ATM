@@ -26,5 +26,13 @@ namespace ATM.Controllers
 
             return View();
         }
+
+
+        public ActionResult Register()
+        {
+            ViewBag.Message = "Your register page.";
+
+            return View();
+        }
     }
 }

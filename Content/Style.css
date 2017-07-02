@@ -1,13 +1,6 @@
-/*
-
-@Author : Mohammad Hoseini Rad
-@Github : github.com/amhr
-@Address: mhr-developer.com
-
-*/
 @font-face{
 	font-family:Behdad;
-	src:url(fonts/Behdad_Font.ttf);
+	src:url(/Fonts/Behdad_Font.ttf);
 }
 *{
 	padding: 0;
@@ -40,6 +33,10 @@ header > .placeholder{
 	height:inherit;
 	justify-content:space-between;
 	overflow:visible;
+}
+.name{
+    font-size:18px;
+    color: white;
 }
 .logo{
 	font-size:18px;
