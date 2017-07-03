@@ -23,16 +23,16 @@ namespace ATM.Controllers
         [HttpPost]
         public ActionResult Login(FormCollection collection)
         {
+            TempData["Message"] = "ورود موفق به سیستم!";
             if (ModelState.IsValid)
             {
 
-                ViewBag.Message = "ورود موفق به سیستم!";
 
 
                 if (ControllerContext.IsChildAction)
                     ControllerContext.HttpContext.Response.Redirect(ControllerContext.HttpContext.Request.Url.ToString());
                 else
-                    return RedirectToAction("Index");
+                    return RedirectToAction("Index", "Home");
             }
             if (ControllerContext.IsChildAction)
                 return PartialView();
@@ -56,24 +56,19 @@ namespace ATM.Controllers
                 db.People.Add(person);
                 await db.SaveChangesAsync();
 
-                ViewBag.Message = "ثبت نام با موفقیت انجام شد!";
-
-                //if (ControllerContext.IsChildAction)
-                //    ControllerContext.HttpContext.Response.Redirect(ControllerContext.HttpContext.Request.Url.ToString());
-                //else
-                //    return RedirectToAction("Index");
+                TempData["Message"] = "ثبت نام با موفقیت انجام شد!";
 
                 if (ControllerContext.IsChildAction)
-                    return PartialView();
-                return View();
+                    ControllerContext.HttpContext.Response.Redirect(ControllerContext.HttpContext.Request.Url.ToString());
+                else
+                    return RedirectToAction("Index", "Home");
             }
-            else
-            {
-                ViewBag.Message = "حداقل یکی از ورودی ها نامعتبر است";
-                if (ControllerContext.IsChildAction)
-                    return PartialView(person);
-                return View(person);
-            }
+
+            TempData["Message"] = "حداقل یکی از ورودی ها نامعتبر است";
+            if (ControllerContext.IsChildAction)
+                return PartialView(person);
+            return View(person);
+
 
         }
     }

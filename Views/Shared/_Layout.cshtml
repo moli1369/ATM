@@ -42,9 +42,10 @@
 
                 </ul>
             </nav>
-            @if (ViewBag.Message != null)
+            @if (TempData["Message"] != null)
             {
-                <div class="message">@ViewBag.Message</div>
+                <div class="message">@TempData["Message"]</div>
+                TempData["Message"] = null;
             }
         </div>
     </header>
