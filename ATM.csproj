@@ -190,6 +190,7 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\Layout.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
@@ -217,6 +218,7 @@
     <Content Include="Views\Auth\Login.cshtml" />
     <Content Include="Views\Shared\Public.cshtml" />
     <Content Include="Views\Auth\_ViewStart.cshtml" />
+    <Content Include="Views\User\Status.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

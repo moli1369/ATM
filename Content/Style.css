@@ -102,7 +102,7 @@ input, textarea {
         background-color: #fe9881;
     }
 
-    button, input[type=submit] {
+    button, input[type=submit], #app > div > a {
         background: #b71c1c;
         color: white;
         padding: 10px 30px;
@@ -111,10 +111,12 @@ input, textarea {
         box-shadow: inset 0px -100px 0px #c62828;
         transition: .4s;
         margin: .1em;
+        display:block;
+        text-align:center;
         margin: 5px auto 0 auto;
     }
 
-        button:hover, input[type=submit]:hover, input[type=submit]:focus {
+        button:hover, button:focus, input[type=submit]:hover, input[type=submit]:focus, #app > div > a:hover, #app > div > a:focus {
             box-shadow: inset 0px -0px 0px #c62828;
         }
 
@@ -156,7 +158,7 @@ header > .placeholder > .message {
     -webkit-box-shadow: 0px 0px 4px 1px rgba(0,0,0,0.75);
     -moz-box-shadow: 0px 0px 4px 1px rgba(0,0,0,0.75);
     box-shadow: 0px 0px 4px 1px rgba(0,0,0,0.75);
-    opacity:0;
+    opacity: 0;
     animation: fadeout 2s;
     -moz-animation: fadeout 2s;
     -webkit-animation: fadeout 2s;
@@ -187,11 +189,18 @@ header > .placeholder > .message {
             color: #b71c1c;
             padding: 5px;
             text-align: right;
-            border-bottom: 1px rgba(0,0,0,0.05) solid;
             font-weight: bold;
         }
-        
-        #app > div > .simple-text{
+
+            #app > div .title, #app > div .title:hover, #app > div .title:focus {
+                background: none;
+                text-shadow:none;
+                border:none;
+                box-shadow:none;
+            }
+
+        #app > div > .simple-text {
+            margin-bottom:10px;
             display: block;
         }
 

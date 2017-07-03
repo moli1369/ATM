@@ -13,8 +13,9 @@ namespace ATM.Controllers
     public class AuthController : Controller
     {
         private MainModel db = new MainModel();
+
         // GET: User/Create
-        [Gordibute(JustNonAuthorized =true)]
+        [Gordibute(JustNonAuthorized = true)]
         public ActionResult Login()
         {
             if (ControllerContext.IsChildAction)
@@ -48,7 +49,7 @@ namespace ATM.Controllers
             return View();
         }
 
-        [Gordibute(JustNonAuthorized =true)]
+        [Gordibute(JustNonAuthorized = true)]
         public ActionResult Register()
         {
             if (ControllerContext.IsChildAction)
@@ -57,7 +58,7 @@ namespace ATM.Controllers
         }
 
         [HttpPost]
-        [Gordibute(JustNonAuthorized =true)]
+        [Gordibute(JustNonAuthorized = true)]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register([Bind(Include = "Id,Username,Password,Firstname,Lastname,PictureFileId")] Person person)
         {
@@ -77,9 +78,17 @@ namespace ATM.Controllers
             }
 
             TempData["Message"] = "حداقل یکی از ورودی ها نامعتبر است";
+
             if (ControllerContext.IsChildAction)
                 return PartialView(person);
             return View(person);
+        }
+
+        [Gordibute()]
+        public RedirectResult Logout()
+        {
+            Session["UserId"] = null;
+            return new RedirectResult("~/");
         }
     }
 }

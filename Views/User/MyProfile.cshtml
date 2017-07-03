@@ -6,7 +6,7 @@
 <div>
     @Html.ActionLink("• پروفایل", "Profile", "User", new object { }, new { @class = "title" })
 
-    
+
     <h1 class="simple-text">
         @Html.DisplayFor(model => model.Username)
     </h1>
@@ -21,10 +21,7 @@
         @Html.DisplayFor(model => model.Lastname)
     </span>
 
-    @Html.DisplayNameFor(model => model.PictureFileId)
-    <span class="simple-text">
-        @Html.DisplayFor(model => model.PictureFileId)
-    </span>
+    عکس در اینجا
 
     @Html.ActionLink("ویرایش", "Edit")
 </div>

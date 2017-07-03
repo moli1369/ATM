@@ -13,26 +13,6 @@ namespace ATM.Controllers
     {
         public MainModel db = new MainModel();
 
-        /*
-        [Gordibute]
-        public async Task<ActionResult> MyProfile()
-        {
-            var id = Guid.Parse(Session["UserId"].ToString());
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Person person = await db.People.FindAsync(id);
-            if (person == null)
-            {
-                return HttpNotFound();
-            }
-            if (ControllerContext.IsChildAction)
-                return PartialView(person);
-            return View(person);
-        }
-        */
-
         [Gordibute]
         public ActionResult MyProfile()
         {
@@ -49,6 +29,14 @@ namespace ATM.Controllers
             if (ControllerContext.IsChildAction)
                 return PartialView(person);
             return View(person);
+        }
+
+        [Gordibute]
+        public ActionResult Status()
+        {
+            if (ControllerContext.IsChildAction)
+                return PartialView();
+            return View();
         }
 
     }
