@@ -190,6 +190,10 @@ header > .placeholder > .message {
             border-bottom: 1px rgba(0,0,0,0.05) solid;
             font-weight: bold;
         }
+        
+        #app > div > .simple-text{
+            display: block;
+        }
 
 
 footer {

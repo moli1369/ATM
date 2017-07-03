@@ -1,0 +1,30 @@
+﻿@model ATM.Models.Person
+
+@{
+    ViewBag.Title = "پروفایل";
+}
+<div>
+    @Html.ActionLink("• پروفایل", "Profile", "User", new object { }, new { @class = "title" })
+
+    
+    <h1 class="simple-text">
+        @Html.DisplayFor(model => model.Username)
+    </h1>
+
+    @Html.DisplayNameFor(model => model.Firstname)
+    <span class="simple-text">
+        @Html.DisplayFor(model => model.Firstname)
+    </span>
+
+    @Html.DisplayNameFor(model => model.Lastname)
+    <span class="simple-text">
+        @Html.DisplayFor(model => model.Lastname)
+    </span>
+
+    @Html.DisplayNameFor(model => model.PictureFileId)
+    <span class="simple-text">
+        @Html.DisplayFor(model => model.PictureFileId)
+    </span>
+
+    @Html.ActionLink("ویرایش", "Edit")
+</div>

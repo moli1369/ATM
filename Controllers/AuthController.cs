@@ -33,7 +33,7 @@ namespace ATM.Controllers
                 if (us != null && us.Password == new RexaHash().MD5(login.Pass))
                 {
                     TempData["Message"] = "ورود موفق به سیستم!";
-                    Session["Username"] = us.Username;
+                    Session["UserId"] = us.Id;
                 }
                 else
                     TempData["Message"] = "نام کاربری یا کلمه ی عبور صحیح نیست!";

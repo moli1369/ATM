@@ -22,20 +22,6 @@ namespace ATM.Controllers
             return View(await db.People.ToListAsync());
         }
 
-        // GET: People/Details/5
-        public async Task<ActionResult> Details(Guid? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Person person = await db.People.FindAsync(id);
-            if (person == null)
-            {
-                return HttpNotFound();
-            }
-            return View(person);
-        }
 
         // GET: People/Create
         public ActionResult Create()
@@ -73,6 +59,8 @@ namespace ATM.Controllers
             {
                 return HttpNotFound();
             }
+            if (ControllerContext.IsChildAction)
+                return PartialView(person);
             return View(person);
         }
 

@@ -13,17 +13,12 @@ namespace ATM.Controllers
         /// </summary>
         public bool JustNonAuthorized { get; set; }
 
-        //public GordibuteAttribute()
-        //{
-
-        //}
-
         public override void OnActionExecuting(ActionExecutingContext actionContext)
         {
             bool CanAccess = false;
             try
             {
-                if (actionContext.HttpContext.Session["Username"] != null)
+                if (actionContext.HttpContext.Session["UserId"] != null)
                     CanAccess = true;
             }
             catch
@@ -37,7 +32,7 @@ namespace ATM.Controllers
                 if (CanAccess)
                     actionContext.Result = new HttpUnauthorizedResult();
             }
-            else if (!JustNonAuthorized)
+            else
             {
                 if (!CanAccess)
                     actionContext.Result = new HttpUnauthorizedResult();
