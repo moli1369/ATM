@@ -4,9 +4,9 @@
     ViewBag.Title = "ثبت نام";
 }
 <div>
-    <span class="title"> ثبت نام</span>
+    @Html.ActionLink("• ثبت نام", "Register", "Auth", new object { }, new { @class = "title" })
 
-    @using (Html.BeginForm(null, null, FormMethod.Post, new { @action = "/Home/Register" }))
+    @using (Html.BeginForm(null, null, FormMethod.Post, new { @action = "/Auth/Register" }))
     {
         @Html.AntiForgeryToken()
         @Html.ValidationSummary(true, "", new { @class = "warning" })

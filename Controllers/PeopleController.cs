@@ -13,8 +13,9 @@ namespace ATM.Controllers
 {
     public class PeopleController : Controller
     {
-
         private MainModel db = new MainModel();
+
+
         // GET: People
         public async Task<ActionResult> Index()
         {

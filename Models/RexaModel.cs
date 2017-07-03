@@ -6,6 +6,25 @@ using System.Web;
 
 namespace ATM.Models
 {
+    public class Login
+    {
+        [DataType(DataType.Text)]
+        [Display(Name ="نام کاربری")]
+        [Required(ErrorMessage ="لطفا نام کاربری خود را وارد نمائید")]
+        public string User { get; set; }
+
+        [DataType(DataType.Password)]
+        [Required(ErrorMessage ="لطفا کلمه ی عبور خود را وارد نمائید")]
+        [Display(Name ="کلمه ی عبور")]
+        public string Pass { get; set; }
+
+        //private string captcha;
+        //public string Captcha
+        //{
+        //    get { return captcha; }
+        //    set { captcha = value; }
+        //}
+    }
     public partial class Person
     {
         private Guid id;
