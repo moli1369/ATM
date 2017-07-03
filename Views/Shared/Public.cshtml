@@ -1,0 +1,9 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "خانه";
+}
+
+@Html.Action("Register", "Auth")
+@Html.Action("Login", "Auth")
+<div>test</div>
+@RenderBody()

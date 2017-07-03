@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿@{ 
+    Layout = "";
+}
+<!DOCTYPE html>
 
 <html>
 <head>
@@ -18,34 +21,25 @@
             <img class="logo" src="~/Arad.jpg" alt="پیشگامان اطلاعات آراد" />
             <nav>
                 <ul>
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("خانه", "Index", "Home")</li>
+                    <li>@Html.ActionLink("درباره ی ما", "About", "Home")</li>
+                    <li>@Html.ActionLink("ارتباط با ما", "Contact", "Home")</li>
                     <li>
-                        <a href="#">Menu 2</a>
+                        <a href="#">منو 4</a>
                         <ul>
-                            <li><a href="#">SubMenu 2 - 1</a></li>
-                            <li><a href="#">SubMenu 2 - 2</a></li>
-                            <li><a href="#">SubMenu 2 - 3</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#">Menu 3</a></li>
-                    <li>
-                        <a href="#">Menu 4</a>
-                        <ul>
-                            <li><a href="#">SubMenu 4 - 1</a></li>
+                            <li><a href="#">منو 4 - 1</a></li>
                             <li>
-                                <a href="#">SubMenu 4 - 2</a>
+                                <a href="#">منو 4 - 2</a>
                                 <ul>
-                                    <li><a href="#">SubMenu 4 - 2 - 1</a></li>
-                                    <li><a href="#">SubMenu 4 - 2 - 2</a></li>
-                                    <li><a href="#">SubMenu 4 - 2 - 3</a></li>
+                                    <li><a href="#">منو 4 - 2 - 1</a></li>
+                                    <li><a href="#">منو 4 - 2 - 2</a></li>
+                                    <li><a href="#">منو 4 - 2 - 3</a></li>
                                 </ul>
                             </li>
-                            <li><a href="#">SubMenu 4 - 3</a></li>
+                            <li><a href="#">منو 4 - 3</a></li>
                         </ul>
                     </li>
-                    <li><a href="#">Menu 5</a></li>
+
                 </ul>
             </nav>
             @if (ViewBag.Message != null)
@@ -57,8 +51,6 @@
 
     <div class="placeholder" style="overflow-x:scroll;">
         <div id="app">
-            @Html.Action("Register", "Home",new { partial = true})
-            <div>test</div>
             @RenderBody()
         </div>
     </div>

@@ -30,29 +30,5 @@ namespace ATM.Controllers
             return View();
         }
 
-
-        public ActionResult Register(bool partial = false)
-        {
-            ViewBag.Message = "Your register page.";
-
-            if (partial)
-                return PartialView();
-            return View();
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Register([Bind(Include = "Id,Username,Password,Firstname,Lastname,PictureFileId")] Person person)
-        {
-            if (ModelState.IsValid)
-            {
-                person.Id = Guid.NewGuid();
-                db.People.Add(person);
-                await db.SaveChangesAsync();
-                return RedirectToAction("Index");
-            }
-
-            return View(person);
-        }
     }
 }

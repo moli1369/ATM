@@ -6,7 +6,7 @@
 <div>
     <span class="title"> ثبت نام</span>
 
-    @using (Html.BeginForm())
+    @using (Html.BeginForm(null, null, FormMethod.Post, new { @action = "/Home/Register" }))
     {
         @Html.AntiForgeryToken()
         @Html.ValidationSummary(true, "", new { @class = "warning" })
