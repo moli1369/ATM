@@ -23,7 +23,6 @@ namespace ATM.Controllers
 
         // POST: User/Create
         [HttpPost]
-        // public ActionResult Login(FormCollection collection)
         public ActionResult Login(Models.Login login)
         {
             if (ModelState.IsValid)
@@ -61,6 +60,7 @@ namespace ATM.Controllers
             if (ModelState.IsValid)
             {
                 person.Id = Guid.NewGuid();
+                person.Password = new RexaHash().MD5(person.Password);
                 db.People.Add(person);
                 await db.SaveChangesAsync();
 
