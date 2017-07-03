@@ -8,6 +8,16 @@ namespace ATM.Controllers
 {
     internal class GordibuteAttribute : ActionFilterAttribute, IActionFilter
     {
+        /// <summary>
+        /// Makes everything reverse :)
+        /// </summary>
+        public bool JustNonAuthorized { get; set; }
+
+        //public GordibuteAttribute()
+        //{
+
+        //}
+
         public override void OnActionExecuting(ActionExecutingContext actionContext)
         {
             bool CanAccess = false;
@@ -20,8 +30,18 @@ namespace ATM.Controllers
             {
                 CanAccess = false;
             }
-            if (!CanAccess)
-                actionContext.Result = new HttpUnauthorizedResult();
+
+
+            if (JustNonAuthorized)
+            {
+                if (CanAccess)
+                    actionContext.Result = new HttpUnauthorizedResult();
+            }
+            else if (!JustNonAuthorized)
+            {
+                if (!CanAccess)
+                    actionContext.Result = new HttpUnauthorizedResult();
+            }
         }
     }
 }

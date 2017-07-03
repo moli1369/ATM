@@ -14,6 +14,7 @@ namespace ATM.Controllers
     {
         private MainModel db = new MainModel();
         // GET: User/Create
+        [Gordibute(JustNonAuthorized =true)]
         public ActionResult Login()
         {
             if (ControllerContext.IsChildAction)
@@ -23,6 +24,7 @@ namespace ATM.Controllers
 
         // POST: User/Create
         [HttpPost]
+        [Gordibute(JustNonAuthorized = true)]
         public ActionResult Login(Models.Login login)
         {
             if (ModelState.IsValid)
@@ -46,6 +48,7 @@ namespace ATM.Controllers
             return View();
         }
 
+        [Gordibute(JustNonAuthorized =true)]
         public ActionResult Register()
         {
             if (ControllerContext.IsChildAction)
@@ -54,6 +57,7 @@ namespace ATM.Controllers
         }
 
         [HttpPost]
+        [Gordibute(JustNonAuthorized =true)]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register([Bind(Include = "Id,Username,Password,Firstname,Lastname,PictureFileId")] Person person)
         {
