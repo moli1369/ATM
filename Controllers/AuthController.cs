@@ -2,6 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
@@ -21,13 +23,19 @@ namespace ATM.Controllers
 
         // POST: User/Create
         [HttpPost]
-        public ActionResult Login(FormCollection collection)
+        // public ActionResult Login(FormCollection collection)
+        public ActionResult Login(Models.Login login)
         {
-            TempData["Message"] = "ورود موفق به سیستم!";
             if (ModelState.IsValid)
             {
-
-
+                var us = db.People.Where(x => x.Username == login.User).FirstOrDefault();
+                if (us != null && us.Password == new RexaHash().MD5(login.Pass))
+                {
+                    TempData["Message"] = "ورود موفق به سیستم!";
+                    Session["Username"] = us.Username;
+                }
+                else
+                    TempData["Message"] = "نام کاربری یا کلمه ی عبور صحیح نیست!";
 
                 if (ControllerContext.IsChildAction)
                     ControllerContext.HttpContext.Response.Redirect(ControllerContext.HttpContext.Request.Url.ToString());
@@ -68,8 +76,6 @@ namespace ATM.Controllers
             if (ControllerContext.IsChildAction)
                 return PartialView(person);
             return View(person);
-
-
         }
     }
 }
