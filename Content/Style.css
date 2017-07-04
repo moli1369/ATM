@@ -62,29 +62,41 @@ nav li {
 
     nav li a {
         align-self: center;
+        padding: 10px;
     }
 
-    nav li ul {
-        position: absolute;
-        background: #eee;
-        margin-top: 65px;
-        width: 100%;
-        left: 0px;
-        display: none;
-    }
+header a:hover, header a:focus {
+    -moz-box-shadow: inset 0 0 10px #000000 !important;
+    -webkit-box-shadow: inset 0 0 10px #000000 !important;
+    box-shadow: inset 0 0 10px #000000 !important;
+    text-decoration: inherit;
+    color: inherit;
+    transition: all linear .5s;
+}
 
-    nav li:hover > ul, nav li:focus > ul, nav li:active > ul {
-        display: block;
-    }
 
-    nav li li {
-        color: #232323;
-        float: left;
-    }
 
-        nav li li:first-child {
-            margin-left: calc((100% - 1024px) / 2 );
-        }
+nav li ul {
+    position: absolute;
+    background: #eee;
+    margin-top: 65px;
+    width: 100%;
+    left: 0px;
+    display: none;
+}
+
+nav li:hover > ul, nav li:focus > ul, nav li:active > ul {
+    display: block;
+}
+
+nav li li {
+    color: #232323;
+    float: left;
+}
+
+    nav li li:first-child {
+        margin-left: calc((100% - 1024px) / 2 );
+    }
 
 label {
     color: #b71c1c;
@@ -111,8 +123,8 @@ input, textarea {
         box-shadow: inset 0px -100px 0px #c62828;
         transition: .4s;
         margin: .1em;
-        display:block;
-        text-align:center;
+        display: block;
+        text-align: center;
         margin: 5px auto 0 auto;
     }
 
@@ -185,9 +197,9 @@ header > .placeholder > .message {
         padding: 10px;
     }
 
-    #app > div.create{
-        width: 750px;
-    }
+        #app > div.create, #app > div.index, #app > div.delete, #app > div.details, #app > div.edit {
+            width: 750px;
+        }
 
         #app > div .title {
             color: #b71c1c;
@@ -198,13 +210,13 @@ header > .placeholder > .message {
 
             #app > div .title, #app > div .title:hover, #app > div .title:focus {
                 background: none;
-                text-shadow:none;
-                border:none;
-                box-shadow:none;
+                text-shadow: none;
+                border: none;
+                box-shadow: none;
             }
 
         #app > div > .simple-text {
-            margin-bottom:10px;
+            margin-bottom: 10px;
             display: block;
         }
 
@@ -343,90 +355,94 @@ footer {
     border-radius: 3px;
 }
 
-    table td, table th {
-        padding: 3px 10px;
+table td, table th {
+    padding: 3px 10px;
+}
+
+table thead th {
+    background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #991821), color-stop(1, #80141C) );
+    background: -moz-linear-gradient( center top, #991821 5%, #80141C 100% );
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#991821', endColorstr='#80141C');
+    background-color: #991821;
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: bold;
+    border-left: 1px solid #B01C26;
+}
+
+    table thead th:first-child {
+        border: none;
     }
 
-    table thead th {
+table tbody td {
+    color: #80141C;
+    border-left: 1px solid #F7CDCD;
+    font-size: 12px;
+    font-weight: normal;
+}
+
+table tbody .alt td {
+    background: #F7CDCD;
+    color: #80141C;
+}
+
+table tbody td:first-child {
+    border-left: none;
+}
+
+table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+table tfoot td div {
+    border-top: 1px solid #991821;
+    background: #F7CDCD;
+}
+
+table tfoot td {
+    padding: 0;
+    font-size: 12px
+}
+
+    table tfoot td div {
+        padding: 2px;
+    }
+
+    table tfoot td ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        text-align: right;
+    }
+
+table tfoot li {
+    display: inline;
+}
+
+    table tfoot li a {
+        text-decoration: none;
+        display: inline-block;
+        padding: 2px 8px;
+        margin: 1px;
+        color: #FFFFFF;
+        border: 1px solid #991821;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        border-radius: 3px;
         background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #991821), color-stop(1, #80141C) );
         background: -moz-linear-gradient( center top, #991821 5%, #80141C 100% );
         filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#991821', endColorstr='#80141C');
         background-color: #991821;
-        color: #ffffff;
-        font-size: 15px;
-        font-weight: bold;
-        border-left: 1px solid #B01C26;
     }
 
-        table thead th:first-child {
-            border: none;
-        }
+table tfoot ul.active, table tfoot ul a:hover {
+    text-decoration: none;
+    border-color: #80141C;
+    color: #FFFFFF;
+    background: none;
+    background-color: #991821;
+}
+/***************************************/
 
-    table tbody td {
-        color: #80141C;
-        border-left: 1px solid #F7CDCD;
-        font-size: 12px;
-        font-weight: normal;
-    }
-
-    table tbody .alt td {
-        background: #F7CDCD;
-        color: #80141C;
-    }
-
-    table tbody td:first-child {
-        border-left: none;
-    }
-
-    table tbody tr:last-child td {
-        border-bottom: none;
-    }
-
-    table tfoot td div {
-        border-top: 1px solid #991821;
-        background: #F7CDCD;
-    }
-
-    table tfoot td {
-        padding: 0;
-        font-size: 12px
-    }
-
-        table tfoot td div {
-            padding: 2px;
-        }
-
-        table tfoot td ul {
-            margin: 0;
-            padding: 0;
-            list-style: none;
-            text-align: right;
-        }
-
-    table tfoot li {
-        display: inline;
-    }
-
-        table tfoot li a {
-            text-decoration: none;
-            display: inline-block;
-            padding: 2px 8px;
-            margin: 1px;
-            color: #FFFFFF;
-            border: 1px solid #991821;
-            -webkit-border-radius: 3px;
-            -moz-border-radius: 3px;
-            border-radius: 3px;
-            background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #991821), color-stop(1, #80141C) );
-            background: -moz-linear-gradient( center top, #991821 5%, #80141C 100% );
-            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#991821', endColorstr='#80141C');
-            background-color: #991821;
-        }
-
-    table tfoot ul.active, table tfoot ul a:hover {
-        text-decoration: none;
-        border-color: #80141C;
-        color: #FFFFFF;
-        background: none;
-        background-color: #991821;
-    }
+#app > .status {
+}

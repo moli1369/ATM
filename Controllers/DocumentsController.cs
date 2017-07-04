@@ -22,7 +22,7 @@ namespace ATM.Controllers
             Guid UserID = Guid.Parse(Session["UserId"].ToString());
             var documents = db.Documents.Where(x => x.PersonId == UserID);
             if (ControllerContext.IsChildAction)
-                return PartialView(documents.OrderByDescending(x => x.Expire).Where(x => x.Expire <= DateTime.Now).Take(5).ToList());
+                return PartialView(documents.OrderByDescending(x => x.Expire).Where(x => x.Expire >= DateTime.Now).Take(5).ToList());
             return View(documents.OrderByDescending(x => x.Submit).ToList());
         }
 
@@ -50,9 +50,12 @@ namespace ATM.Controllers
         public ActionResult Create()
         {
             // ViewBag.PersonId = new SelectList(db.People, "Id", "Username");
+            if (ControllerContext.IsChildAction)
+                return PartialView();
             return View();
         }
         [HttpPost]
+        [ValidateInput(false)]
         [ValidateAntiForgeryToken]
         // public async Task<ActionResult> Create([Bind(Include = "Id,Title,Submit,Expire,PersonId,Body,Comment")] Document document)
         public async Task<ActionResult> Create([Bind(Include = "Id,Title,Submit,Expire,Body,Comment")] Document document)
@@ -63,10 +66,14 @@ namespace ATM.Controllers
                 document.Id = Guid.NewGuid();
                 db.Documents.Add(document);
                 await db.SaveChangesAsync();
-                return RedirectToAction("Index");
+                TempData["Message"] = "سند ایجاد شد";
+                return RedirectToAction("Edit", "Documents", new { id = document.Id });
+                // return RedirectToAction("Index");
             }
 
             // ViewBag.PersonId = new SelectList(db.People, "Id", "Username", document.PersonId);
+            if (ControllerContext.IsChildAction)
+                return PartialView(document);
             return View(document);
         }
 
@@ -86,6 +93,8 @@ namespace ATM.Controllers
                 return HttpNotFound();
             }
             ViewBag.PersonId = new SelectList(db.People, "Id", "Username", document.PersonId);
+            if (ControllerContext.IsChildAction)
+                return PartialView(document);
             return View(document);
         }
 
@@ -93,8 +102,9 @@ namespace ATM.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [ValidateInput(false)]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Id,Title,Submit,Expire,PersonId,Body,Comment")] Document document)
+        public async Task<ActionResult> Edit([Bind(Include = "Id,Title,Submit,Expire,Body,Comment")] Document document)
         {
             if (ModelState.IsValid)
             {
@@ -103,9 +113,11 @@ namespace ATM.Controllers
                     return new HttpStatusCodeResult(HttpStatusCode.Unauthorized);
                 db.Entry(document).State = EntityState.Modified;
                 await db.SaveChangesAsync();
-                return RedirectToAction("Index");
+                TempData["Message"] = "تغییرات با موفقیت اعمال شد";
             }
             ViewBag.PersonId = new SelectList(db.People, "Id", "Username", document.PersonId);
+            if (ControllerContext.IsChildAction)
+                return PartialView(document);
             return View(document);
         }
 
@@ -124,6 +136,8 @@ namespace ATM.Controllers
             {
                 return HttpNotFound();
             }
+            if (ControllerContext.IsChildAction)
+                return PartialView(document);
             return View(document);
         }
 
@@ -137,6 +151,7 @@ namespace ATM.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.Unauthorized);
             db.Documents.Remove(document);
             await db.SaveChangesAsync();
+            TempData["Message"] = "عملیات حذف سند موفقیت آمیز بود";
             return RedirectToAction("Index");
         }
 

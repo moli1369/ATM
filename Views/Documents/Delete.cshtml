@@ -3,14 +3,8 @@
 @{
     ViewBag.Title = "حذف سند";
 }
-<div>
-    <span class="title">حذف سند</span>
-
-    @Html.DisplayNameFor(model => model.Person.Username)
-    <span class="simple-text">
-        @Html.DisplayFor(model => model.Person.Username)
-    </span>
-
+<div class="delete">
+    <span class="title">• حذف سند</span>
 
     @Html.DisplayNameFor(model => model.Title)
     <span class="simple-text">
@@ -25,11 +19,6 @@
     @Html.DisplayNameFor(model => model.Expire)
     <span class="simple-text">
         @Html.DisplayFor(model => model.Expire)
-    </span>
-
-    @Html.DisplayNameFor(model => model.Body)
-    <span class="simple-text">
-        @Html.DisplayFor(model => model.Body)
     </span>
 
     @Html.DisplayNameFor(model => model.Comment)

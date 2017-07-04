@@ -1,77 +1,43 @@
 ﻿@model ATM.Models.Document
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "ویرایش سند";
 }
 
-<h2>Edit</h2>
+<div class="edit">
+    <span class="title">• ویرایش سند</span>
 
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>Document</h4>
-        <hr />
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
         @Html.ValidationSummary(true, "", new { @class = "warning" })
         @Html.HiddenFor(model => model.Id)
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Title)
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Title)
-                @Html.ValidationMessageFor(model => model.Title, "", new { @class = "warning" })
-            </div>
-        </div>
+        @Html.LabelFor(model => model.Title)
+        @Html.EditorFor(model => model.Title)
+        @Html.ValidationMessageFor(model => model.Title, "", new { @class = "warning" })
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Submit)
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Submit)
-                @Html.ValidationMessageFor(model => model.Submit, "", new { @class = "warning" })
-            </div>
-        </div>
+        @Html.LabelFor(model => model.Submit)
+        @Html.EditorFor(model => model.Submit)
+        @Html.ValidationMessageFor(model => model.Submit, "", new { @class = "warning" })
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Expire)
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Expire)
-                @Html.ValidationMessageFor(model => model.Expire, "", new { @class = "warning" })
-            </div>
-        </div>
+        @Html.LabelFor(model => model.Expire)
+        @Html.EditorFor(model => model.Expire)
+        @Html.ValidationMessageFor(model => model.Expire, "", new { @class = "warning" })
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.PersonId, "PersonId")
-            <div class="col-md-10">
-                @Html.DropDownList("PersonId", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.PersonId, "", new { @class = "warning" })
-            </div>
-        </div>
+        @Html.LabelFor(model => model.PersonId, "PersonId")
+        @Html.DropDownList("PersonId", null, htmlAttributes: new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.PersonId, "", new { @class = "warning" })
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Body)
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Body)
-                @Html.ValidationMessageFor(model => model.Body, "", new { @class = "warning" })
-            </div>
-        </div>
+        @Html.LabelFor(model => model.Body)
+        @Html.EditorFor(model => model.Body)
+        @Html.ValidationMessageFor(model => model.Body, "", new { @class = "warning" })
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Comment)
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Comment)
-                @Html.ValidationMessageFor(model => model.Comment, "", new { @class = "warning" })
-            </div>
-        </div>
+        @Html.LabelFor(model => model.Comment)
+        @Html.EditorFor(model => model.Comment)
+        @Html.ValidationMessageFor(model => model.Comment, "", new { @class = "warning" })
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
-            </div>
-        </div>
-    </div>
-}
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
+        <input type="submit" value="ذخیره" class="btn btn-default" />
+    }
 </div>
