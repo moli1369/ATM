@@ -1,4 +1,4 @@
-﻿@{ 
+﻿@{
     Layout = "";
 }
 <!DOCTYPE html>
@@ -9,12 +9,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - سامانه ی برنامه ریز آراد</title>
     @Scripts.Render("~/bundles/modernizr")
-    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/bootstrap")
+    <link rel="stylesheet" href="~/Summernote/summernote.css">
+    <script type="text/javascript" src="~/Summernote/summernote.js"></script>
+    <link href="~/flatpickr/flatpickr.css" rel="stylesheet" />
+    <link href="~/flatpickr/material_red.css" rel="stylesheet" />
+    <script src="~/flatpickr/flatpickr.js"></script>
     <link href="@("/Content/" + HttpContext.Current.Request.RequestContext.RouteData.Values["controller"].ToString() + "/" + ViewContext.RouteData.Values["action"].ToString() + ".css")" rel="stylesheet" />
+    @Styles.Render("~/Content/css")
 </head>
 
 <body dir="rtl">
-
     <header>
         <div class="placeholder">
             <div class="name">@Html.ActionLink("سامانه ی برنامه ریز آراد", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })</div>
@@ -62,9 +69,27 @@
         </div>
     </footer>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/jqueryval")
     @Scripts.Render("~/bundles/mine")
+    <script type="text/javascript">
+        $(function () {
+            $('textarea').summernote({
+                toolbar: [
+                    ['view', ['fullscreen', 'codeview']],
+                    ['style', ['bold', 'italic', 'underline', 'clear']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['table', ['table']],
+                    ['insert', ['link', 'picture']]
+                ]
+            });
+        });
+        $(function () {
+            $("[type=datetime]").flatpickr(
+                {
+                    enableTime: true
+                }
+            );
+        });
+    </script>
     @RenderSection("scripts", required: false)
 </body>
 </html>
