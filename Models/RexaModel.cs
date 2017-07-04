@@ -62,12 +62,6 @@ namespace ATM.Models
         [Display(Name ="شناسه ی تصویر")]
         public Guid? PictureFileId { get; set; }
 
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Membership> Memberships { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Project> Projects { get; set; }
     }
 
     internal class RexaUniqueUsername : ValidationAttribute

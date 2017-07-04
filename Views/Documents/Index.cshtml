@@ -1,0 +1,40 @@
+﻿@model IEnumerable<ATM.Models.Document>
+
+@{
+    ViewBag.Title = "اسناد";
+}
+
+<div>
+    @Html.ActionLink("• اسناد", "Index", null, new { @class = "title" })
+    <table>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Expire)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Expire)
+                </td>
+                <td>
+                    @Html.ActionLink("مشاهده", "Details", new { id = item.Id })
+                    @Html.ActionLink("ویرایش", "Edit", new { id = item.Id })
+                    @Html.ActionLink("حذف", "Delete", new { id = item.Id })
+                </td>
+            </tr>
+        }
+    </table>
+    @Html.ActionLink("سند جدید", "Create")
+</div>

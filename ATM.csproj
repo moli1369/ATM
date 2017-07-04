@@ -150,6 +150,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AuthController.cs" />
+    <Compile Include="Controllers\DocumentsController.cs" />
     <Compile Include="Controllers\GordibuteAttribute.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\RexaHash.cs" />
@@ -157,6 +158,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\DateDimension.cs" />
+    <Compile Include="Models\Document.cs" />
     <Compile Include="Models\MainModel.cs" />
     <Compile Include="Models\Membership.cs" />
     <Compile Include="Models\Person.cs" />
@@ -215,6 +218,11 @@
     <Content Include="Views\Shared\Public.cshtml" />
     <Content Include="Views\Auth\_ViewStart.cshtml" />
     <Content Include="Views\User\Status.cshtml" />
+    <Content Include="Views\Documents\Create.cshtml" />
+    <Content Include="Views\Documents\Delete.cshtml" />
+    <Content Include="Views\Documents\Details.cshtml" />
+    <Content Include="Views\Documents\Edit.cshtml" />
+    <Content Include="Views\Documents\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
