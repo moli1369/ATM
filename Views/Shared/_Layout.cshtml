@@ -10,7 +10,7 @@
     <title>@ViewBag.Title - سامانه ی برنامه ریز آراد</title>
     @Scripts.Render("~/bundles/modernizr")
     @Styles.Render("~/Content/css")
-    <link href="/Content/@HttpContext.Current.Request.RequestContext.RouteData.Values["controller"].ToString()/@ViewContext.RouteData.Values["action"].ToString()" rel="stylesheet" />
+    <link href="@("/Content/" + HttpContext.Current.Request.RequestContext.RouteData.Values["controller"].ToString() + "/" + ViewContext.RouteData.Values["action"].ToString() + ".css")" rel="stylesheet" />
 </head>
 
 <body dir="rtl">
