@@ -47,20 +47,17 @@ namespace ATM.Controllers
             return View(document);
         }
 
-        // GET: Documents/Create
         public ActionResult Create()
         {
-            ViewBag.PersonId = new SelectList(db.People, "Id", "Username");
+            // ViewBag.PersonId = new SelectList(db.People, "Id", "Username");
             return View();
         }
-
-        // POST: Documents/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "Id,Title,Submit,Expire,PersonId,Body,Comment")] Document document)
+        // public async Task<ActionResult> Create([Bind(Include = "Id,Title,Submit,Expire,PersonId,Body,Comment")] Document document)
+        public async Task<ActionResult> Create([Bind(Include = "Id,Title,Submit,Expire,Body,Comment")] Document document)
         {
+            document.PersonId = Guid.Parse(Session["UserId"].ToString());
             if (ModelState.IsValid)
             {
                 document.Id = Guid.NewGuid();
@@ -69,7 +66,7 @@ namespace ATM.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.PersonId = new SelectList(db.People, "Id", "Username", document.PersonId);
+            // ViewBag.PersonId = new SelectList(db.People, "Id", "Username", document.PersonId);
             return View(document);
         }
 

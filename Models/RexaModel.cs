@@ -9,13 +9,13 @@ namespace ATM.Models
     public class Login
     {
         [DataType(DataType.Text)]
-        [Display(Name ="نام کاربری")]
-        [Required(ErrorMessage ="لطفا نام کاربری خود را وارد نمائید")]
+        [Display(Name = "نام کاربری")]
+        [Required(ErrorMessage = "لطفا نام کاربری خود را وارد نمائید")]
         public string User { get; set; }
 
         [DataType(DataType.Password)]
-        [Required(ErrorMessage ="لطفا کلمه ی عبور خود را وارد نمائید")]
-        [Display(Name ="کلمه ی عبور")]
+        [Required(ErrorMessage = "لطفا کلمه ی عبور خود را وارد نمائید")]
+        [Display(Name = "کلمه ی عبور")]
         public string Pass { get; set; }
 
         //private string captcha;
@@ -24,6 +24,37 @@ namespace ATM.Models
         //    get { return captcha; }
         //    set { captcha = value; }
         //}
+    }
+    public partial class Document
+    {
+        [Display(Name = "شناسه")]
+        public Guid Id { get; set; }
+
+        [Required(ErrorMessage  =  "وارد کردن عنوان الزامیست" )]
+        [StringLength(500)]
+        [Display(Name = "عنوان")]
+        public string Title { get; set; }
+
+        [DataType(DataType.DateTime)]
+        [Display(Name = "ثبت")]
+        public DateTime Submit { get; set; }
+
+        [Display(Name = "اتمام")]
+        [DataType(DataType.DateTime)]
+        public DateTime? Expire { get; set; }
+
+        public Guid PersonId { get; set; }
+
+        [Display(Name = "متن")]
+        public string Body { get; set; }
+
+        [Display(Name = "توضیحات")]
+        [Required(ErrorMessage = "وارد کردن توضیحات الزامی است")]
+        [StringLength(3000)]
+        public string Comment { get; set; }
+
+        public virtual Person Person { get; set; }
+
     }
     public partial class Person
     {
@@ -40,14 +71,14 @@ namespace ATM.Models
         }
 
         [StringLength(50)]
-        [Display(Name ="نام کاربری")]
-        [Required(ErrorMessage ="این فیلد الزامیست")]
+        [Display(Name = "نام کاربری")]
+        [Required(ErrorMessage = "این فیلد الزامیست")]
         [RexaUniqueUsername]
         public string Username { get; set; }
 
         [Required(ErrorMessage = "انتخاب کلمه ی عبور الزامیست")]
         [StringLength(4000)]
-        [Display(Name ="کلمه ی عبور")]
+        [Display(Name = "کلمه ی عبور")]
         [DataType(DataType.Password)]
         public string Password { get; set; }
 
@@ -59,7 +90,7 @@ namespace ATM.Models
         [Display(Name = "نام خانوادگی")]
         public string Lastname { get; set; }
 
-        [Display(Name ="شناسه ی تصویر")]
+        [Display(Name = "شناسه ی تصویر")]
         public Guid? PictureFileId { get; set; }
 
     }
