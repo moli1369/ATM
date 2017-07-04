@@ -46,6 +46,7 @@ namespace ATM.Models
         public Guid PersonId { get; set; }
 
         [Display(Name = "متن")]
+        [DataType(DataType.MultilineText)]
         public string Body { get; set; }
 
         [Display(Name = "توضیحات")]
