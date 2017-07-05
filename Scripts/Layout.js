@@ -14,11 +14,38 @@
 
 
 
+/*!
+ * Screenful
+*
+* http://www.cssscript.com/demo/simple-jquery-plugin-to-make-html-elements-fullscreen-screenfull-js/
+ */
+
+!function (e, n) { "use strict"; var l = "undefined" != typeof Element && "ALLOW_KEYBOARD_INPUT" in Element, r = function () { for (var e, l, r = [["requestFullscreen", "exitFullscreen", "fullscreenElement", "fullscreenEnabled", "fullscreenchange", "fullscreenerror"], ["webkitRequestFullscreen", "webkitExitFullscreen", "webkitFullscreenElement", "webkitFullscreenEnabled", "webkitfullscreenchange", "webkitfullscreenerror"], ["webkitRequestFullScreen", "webkitCancelFullScreen", "webkitCurrentFullScreenElement", "webkitCancelFullScreen", "webkitfullscreenchange", "webkitfullscreenerror"], ["mozRequestFullScreen", "mozCancelFullScreen", "mozFullScreenElement", "mozFullScreenEnabled", "mozfullscreenchange", "mozfullscreenerror"], ["msRequestFullscreen", "msExitFullscreen", "msFullscreenElement", "msFullscreenEnabled", "MSFullscreenChange", "MSFullscreenError"]], t = 0, u = r.length, c = {}; t < u; t++)if ((e = r[t]) && e[1] in n) { for (t = 0, l = e.length; t < l; t++)c[r[0][t]] = e[t]; return c } return !1 }(), t = { request: function (e) { var t = r.requestFullscreen; e = e || n.documentElement, /5\.1[\.\d]* Safari/.test(navigator.userAgent) ? e[t]() : e[t](l && Element.ALLOW_KEYBOARD_INPUT) }, exit: function () { n[r.exitFullscreen]() }, toggle: function (e) { this.isFullscreen ? this.exit() : this.request(e) }, onchange: function () { }, onerror: function () { }, raw: r }; r ? (Object.defineProperties(t, { isFullscreen: { get: function () { return !!n[r.fullscreenElement] } }, element: { enumerable: !0, get: function () { return n[r.fullscreenElement] } }, enabled: { enumerable: !0, get: function () { return !!n[r.fullscreenEnabled] } } }), n.addEventListener(r.fullscreenchange, function (e) { t.onchange.call(t, e) }), n.addEventListener(r.fullscreenerror, function (e) { t.onerror.call(t, e) }), e.screenfull = t) : e.screenfull = !1 }(window, document);
 
 $(function () {
-    $("html, body, *").mousewheel(function (event, delta) {
+    $("body > div").mousewheel(function (event, delta) {
         this.scrollRight += (delta * 80);
         this.scrollLeft += (delta * 80);
         event.preventDefault();
     });
 });
+
+
+function guidGenerator() {
+    var S4 = function () {
+        return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
+    };
+    return (S4() + S4() + "-" + S4() + "-" + S4() + "-" + S4() + "-" + S4() + S4() + S4());
+}
+$("#app > div").each(function () {
+    //$(this).setAttribute("id", guidGenerator());
+    $(this).prepend("<button id=\"" + guidGenerator() + "\" class=\"btn_fullscreen\">Full screen</button>");
+});
+$("#app > div > button").each(
+    function () {
+        $(this).on("click", function () {
+            //$(this).closest("div").attr("class", "full-screen");
+            screenfull.toggle((this).closest("div"));
+        });
+    }
+);

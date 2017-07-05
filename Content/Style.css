@@ -197,8 +197,9 @@ header > .placeholder > .message {
         padding: 10px;
     }
 
+
         #app > div.create, #app > div.index, #app > div.delete, #app > div.details, #app > div.edit {
-            width: 750px;
+            /* width: 750px; */
         }
 
         #app > div .title {
@@ -442,7 +443,26 @@ table tfoot ul.active, table tfoot ul a:hover {
     background: none;
     background-color: #991821;
 }
-/***************************************/
 
-#app > .status {
+
+
+.full-screen {
+}
+
+button.btn_fullscreen, button.btn_fullscreen:hover, button.btn_fullscreen:focus {
+    background: none;
+    box-shadow: none;
+    background-image: url(fullscreen-10-xxl.png);
+    height: 20px;
+    width: 20px;
+    padding: 0;
+    margin: 0;
+    text-indent: 100%;
+    color: transparent;
+    white-space: nowrap;
+    overflow: hidden;
+    background-size: 100% 100%;
+    background-position: center center;
+    background-repeat: no-repeat;
+    margin-right: calc( 100% - 20px);
 }
