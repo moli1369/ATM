@@ -19,8 +19,28 @@ a {
     text-decoration: none;
 }
 
+
+
+
+
+
+header, footer, body{
+    margin:0 auto 0 auto;
+    min-width:1024px;
+    width: 100%;
+}
+
+nav li li:first-child {
+    margin-left: calc((100% - 1364px) / 2 );
+}
+
+
+
+
+
+
+
 .placeholder {
-    width: 1024px;
     margin: auto;
     overflow: hidden;
 }
@@ -28,16 +48,15 @@ a {
 header {
     background: #212121;
     height: 75px;
-    width: 100%;
-    min-width: 1024px;
 }
 
     header > .placeholder {
+        width:100%;
         display: flex;
         align-items: center;
         height: inherit;
         justify-content: space-between;
-        overflow: visible;
+        overflow: hidden;
     }
 
 .name {
@@ -66,9 +85,9 @@ nav li {
     }
 
 header a:hover, header a:focus {
-    -moz-box-shadow: inset 0 0 10px #000000 !important;
-    -webkit-box-shadow: inset 0 0 10px #000000 !important;
-    box-shadow: inset 0 0 10px #000000 !important;
+    -moz-box-shadow: inset 0 0 10px #000000;
+    -webkit-box-shadow: inset 0 0 10px #000000 ;
+    box-shadow: inset 0 0 10px #000000 ;
     text-decoration: inherit;
     color: inherit;
     transition: all linear .5s;
@@ -93,10 +112,6 @@ nav li li {
     color: #232323;
     float: left;
 }
-
-    nav li li:first-child {
-        margin-left: calc((100% - 1024px) / 2 );
-    }
 
 label {
     color: #b71c1c;
@@ -186,20 +201,16 @@ header > .placeholder > .message {
 }
 
     #app > div {
-        width: 250px;
+        width: 400px;
         background: #eee;
-        min-height: 200px;
+        overflow-y: auto;
         margin: 5px;
-        /*box-shadow:0px 4px 10px rgba(0,0,0,.2);*/
         border: .1px #e1e1e1 solid;
-        /*border-bottom: 3px rgba(183,28,28,1) solid;*/
         border-radius: 3px;
         padding: 10px;
     }
 
-
         #app > div.create, #app > div.index, #app > div.delete, #app > div.details, #app > div.edit {
-            /* width: 750px; */
         }
 
         #app > div .title {
@@ -224,16 +235,16 @@ header > .placeholder > .message {
 
 footer {
     color: white;
-    height: 75px;
+    height: 90px;
     margin-top: 10px;
     background: #b71c1c;
+    padding:10px;
 }
 
     footer .placeholder {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        height: 75px;
     }
 
 
@@ -340,20 +351,17 @@ footer {
 
 
 
-.datagrid table {
+table {
     border-collapse: collapse;
-    text-align: left;
+    border-spacing: 0;
     width: 100%;
+    border: 1px solid #ddd;
 }
 
-{
-    font: normal 12px/150% Arial, Helvetica, sans-serif;
-    background: #fff;
-    overflow: hidden;
-    border: 1px solid #991821;
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
-    border-radius: 3px;
+th, td {
+    border: none;
+    text-align: right;
+    padding: 8px;
 }
 
 table td, table th {
@@ -464,5 +472,5 @@ button.btn_fullscreen, button.btn_fullscreen:hover, button.btn_fullscreen:focus 
     background-size: 100% 100%;
     background-position: center center;
     background-repeat: no-repeat;
-    margin-right: calc( 100% - 20px);
+    /*margin-right: calc( 100% - 20px);*/
 }
