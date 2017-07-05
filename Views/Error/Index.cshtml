@@ -1,0 +1,14 @@
+﻿
+@{
+    ViewBag.Title = "خطا | " + ViewBag.Code;
+}
+
+<h1>
+    خطا | @ViewBag.Code
+</h1>
+@if (ViewBag.Message != null)
+{
+    <h2>
+        @ViewBag.Message
+    </h2>
+}

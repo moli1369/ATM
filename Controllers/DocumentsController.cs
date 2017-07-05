@@ -92,7 +92,6 @@ namespace ATM.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.PersonId = new SelectList(db.People, "Id", "Username", document.PersonId);
             if (ControllerContext.IsChildAction)
                 return PartialView(document);
             return View(document);
@@ -104,7 +103,7 @@ namespace ATM.Controllers
         [HttpPost]
         [ValidateInput(false)]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Id,Title,Submit,Expire,Body,Comment")] Document document)
+        public async Task<ActionResult> Edit([Bind(Include = "Id,Title,Submit,PersonId,Expire,Body,Comment")] Document document)
         {
             if (ModelState.IsValid)
             {
@@ -115,7 +114,6 @@ namespace ATM.Controllers
                 await db.SaveChangesAsync();
                 TempData["Message"] = "تغییرات با موفقیت اعمال شد";
             }
-            ViewBag.PersonId = new SelectList(db.People, "Id", "Username", document.PersonId);
             if (ControllerContext.IsChildAction)
                 return PartialView(document);
             return View(document);

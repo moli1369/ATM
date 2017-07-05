@@ -30,12 +30,14 @@ namespace ATM.Controllers
             if (JustNonAuthorized)
             {
                 if (CanAccess)
-                    actionContext.Result = new HttpNotFoundResult();
+                    //throw new HttpException(404, "Not found");
+                actionContext.Result = new HttpNotFoundResult();
             }
             else
             {
                 if (!CanAccess)
-                    actionContext.Result = new HttpUnauthorizedResult();
+                    //throw new HttpException(401, "Unauthorized");
+                actionContext.Result = new HttpUnauthorizedResult();
             }
         }
     }
