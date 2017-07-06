@@ -154,6 +154,7 @@
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\GordibuteAttribute.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PeopleController.cs" />
     <Compile Include="Controllers\RexaHash.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
@@ -400,6 +401,8 @@
     <Content Include="Summernote\lang\summernote-mn-MN" />
     <Content Include="Views\Error\Index.cshtml" />
     <Content Include="Views\Error\_ViewStart.cshtml" />
+    <Content Include="Views\User\Edit.cshtml" />
+    <Content Include="Views\People\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
