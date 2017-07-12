@@ -54,8 +54,9 @@ namespace ATM.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         //public ActionResult Edit([Bind(Include = "Id,Username,Password,Firstname,Lastname,PictureFileId")] Person person)
-        public ActionResult Edit(Person person, HttpPostedFileBase PictureFile )
+        public ActionResult Edit(Person person, HttpPostedFileBase PictureFile)
         {
+                person.Password = new RexaHash().MD5(person.Password);
             if (ModelState.IsValid)
             {
                 db.Entry(person).State = EntityState.Modified;
