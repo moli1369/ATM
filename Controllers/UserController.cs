@@ -53,13 +53,14 @@ namespace ATM.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Username,Password,Firstname,Lastname,PictureFileId")] Person person)
+        //public ActionResult Edit([Bind(Include = "Id,Username,Password,Firstname,Lastname,PictureFileId")] Person person)
+        public ActionResult Edit(Person person, HttpPostedFileBase PictureFile )
         {
             if (ModelState.IsValid)
             {
                 db.Entry(person).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Home");
             }
             return View(person);
         }

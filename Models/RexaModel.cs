@@ -91,7 +91,7 @@ namespace ATM.Models
         [Display(Name = "نام خانوادگی")]
         public string Lastname { get; set; }
 
-        [Display(Name = "شناسه ی تصویر")]
+        [Display(Name = "تصویر")]
         public Guid? PictureFileId { get; set; }
 
     }
