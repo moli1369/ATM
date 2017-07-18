@@ -6,32 +6,30 @@ namespace ATM.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class Project
+    public partial class File
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Project()
+        public File()
         {
-            Tasks = new HashSet<Task>();
+            People = new HashSet<Person>();
         }
 
         public Guid Id { get; set; }
 
-        [StringLength(350)]
-        public string Title { get; set; }
+        [Required]
+        [StringLength(600)]
+        public string Name { get; set; }
 
-        public int Start { get; set; }
+        public int Lenght { get; set; }
 
-        public int End { get; set; }
+        [Required]
+        [StringLength(50)]
+        public string Type { get; set; }
 
-        public Guid OwnerId { get; set; }
-
-        public virtual DateDimension DateDimension { get; set; }
-
-        public virtual DateDimension DateDimension1 { get; set; }
-
-        public virtual Person Person { get; set; }
+        [Required]
+        public byte[] Bytes { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Task> Tasks { get; set; }
+        public virtual ICollection<Person> People { get; set; }
     }
 }

@@ -21,7 +21,10 @@
         @Html.DisplayFor(model => model.Lastname)
     </span>
 
-    عکس در اینجا
+    @if (Model.PictureFileId != null)
+    {
+        <img src="~/Files/Download/@Model.PictureFileId" alt="@Model.Username" />
+    }
 
     @Html.ActionLink("ویرایش", "Edit")
 </div>

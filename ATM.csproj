@@ -16,7 +16,7 @@
     <RootNamespace>ATM</RootNamespace>
     <AssemblyName>ATM</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <MvcBuildViews>false</MvcBuildViews>
+    <MvcBuildViews>true</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
@@ -151,6 +151,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AuthController.cs" />
     <Compile Include="Controllers\DocumentsController.cs" />
+    <Compile Include="Controllers\DownloadController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\GordibuteAttribute.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -162,6 +163,7 @@
     </Compile>
     <Compile Include="Models\DateDimension.cs" />
     <Compile Include="Models\Document.cs" />
+    <Compile Include="Models\File.cs" />
     <Compile Include="Models\MainModel.cs" />
     <Compile Include="Models\Membership.cs" />
     <Compile Include="Models\Person.cs" />
@@ -406,6 +408,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Download\" />
     <Folder Include="Views\Eror\" />
   </ItemGroup>
   <ItemGroup>

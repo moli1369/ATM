@@ -30,18 +30,18 @@ namespace ATM.Models
         [Display(Name = "شناسه")]
         public Guid Id { get; set; }
 
-        [Required(ErrorMessage  =  "وارد کردن عنوان الزامیست" )]
+        [Required(ErrorMessage = "وارد کردن عنوان الزامیست")]
         [StringLength(500)]
         [Display(Name = "عنوان")]
         public string Title { get; set; }
 
         [DataType(DataType.DateTime)]
         [Display(Name = "ثبت")]
-        public DateTime Submit { get; set; }
+        public int Submit { get; set; }
 
         [Display(Name = "اتمام")]
         [DataType(DataType.DateTime)]
-        public DateTime? Expire { get; set; }
+        public int? Expire { get; set; }
 
         public Guid PersonId { get; set; }
 
@@ -53,9 +53,6 @@ namespace ATM.Models
         [Required(ErrorMessage = "وارد کردن توضیحات الزامی است")]
         [StringLength(3000)]
         public string Comment { get; set; }
-
-        public virtual Person Person { get; set; }
-
     }
     public partial class Person
     {
@@ -75,6 +72,7 @@ namespace ATM.Models
         [Display(Name = "نام کاربری")]
         [Required(ErrorMessage = "این فیلد الزامیست")]
         [RexaUniqueUsername]
+        [RegularExpression("([a-z0-9]|_)*", ErrorMessage = "نام کاربری تنها شامل حروف، عدد و زیر خط است")]
         public string Username { get; set; }
 
         [Required(ErrorMessage = "انتخاب کلمه ی عبور الزامیست")]

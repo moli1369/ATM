@@ -8,6 +8,11 @@ namespace ATM.Models
 
     public partial class Document
     {
-        
+
+        public virtual DateDimension DateDimension { get; set; }
+
+        public virtual DateDimension DateDimension1 { get; set; }
+
+        public virtual Person Person { get; set; }
     }
 }

@@ -23,11 +23,15 @@ namespace ATM.Models
         [Required]
         public string Description { get; set; }
 
-        public DateTime Start { get; set; }
+        public int Start { get; set; }
 
-        public DateTime End { get; set; }
+        public int End { get; set; }
 
         public Guid ProjectId { get; set; }
+
+        public virtual DateDimension DateDimension { get; set; }
+
+        public virtual DateDimension DateDimension1 { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Membership> Memberships { get; set; }

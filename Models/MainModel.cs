@@ -14,6 +14,7 @@ namespace ATM.Models
 
         public virtual DbSet<DateDimension> DateDimensions { get; set; }
         public virtual DbSet<Document> Documents { get; set; }
+        public virtual DbSet<File> Files { get; set; }
         public virtual DbSet<Membership> Memberships { get; set; }
         public virtual DbSet<Person> People { get; set; }
         public virtual DbSet<Project> Projects { get; set; }
@@ -51,6 +52,46 @@ namespace ATM.Models
                 .Property(e => e.MonthYear)
                 .IsFixedLength()
                 .IsUnicode(false);
+
+            modelBuilder.Entity<DateDimension>()
+                .HasMany(e => e.Documents)
+                .WithOptional(e => e.DateDimension)
+                .HasForeignKey(e => e.Expire);
+
+            modelBuilder.Entity<DateDimension>()
+                .HasMany(e => e.Documents1)
+                .WithRequired(e => e.DateDimension1)
+                .HasForeignKey(e => e.Submit)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<DateDimension>()
+                .HasMany(e => e.Projects)
+                .WithRequired(e => e.DateDimension)
+                .HasForeignKey(e => e.Start)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<DateDimension>()
+                .HasMany(e => e.Projects1)
+                .WithRequired(e => e.DateDimension1)
+                .HasForeignKey(e => e.End)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<DateDimension>()
+                .HasMany(e => e.Tasks)
+                .WithRequired(e => e.DateDimension)
+                .HasForeignKey(e => e.Start)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<DateDimension>()
+                .HasMany(e => e.Tasks1)
+                .WithRequired(e => e.DateDimension1)
+                .HasForeignKey(e => e.End)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<File>()
+                .HasMany(e => e.People)
+                .WithOptional(e => e.File)
+                .HasForeignKey(e => e.PictureFileId);
 
             modelBuilder.Entity<Person>()
                 .HasMany(e => e.Documents)

@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
@@ -56,9 +57,28 @@ namespace ATM.Controllers
         //public ActionResult Edit([Bind(Include = "Id,Username,Password,Firstname,Lastname,PictureFileId")] Person person)
         public ActionResult Edit(Person person, HttpPostedFileBase PictureFile)
         {
-                person.Password = new RexaHash().MD5(person.Password);
+            person.Password = new RexaHash().MD5(person.Password);
+
+            byte[] data;
+            using (Stream inputStream = PictureFile.InputStream)
+            {
+                MemoryStream memoryStream = inputStream as MemoryStream;
+                if (memoryStream == null)
+                {
+                    memoryStream = new MemoryStream();
+                    inputStream.CopyTo(memoryStream);
+                }
+                data = memoryStream.ToArray();
+            }
+            var pictureFile = new Models.File { Id = Guid.NewGuid(), Bytes = data, Type = PictureFile.ContentType, Lenght = PictureFile.ContentLength, Name = "profile-pic-" + person.Username + ".jpg" };
+
+            db.Files.Add(pictureFile);
+
+            person.PictureFileId = pictureFile.Id;
+
             if (ModelState.IsValid)
             {
+
                 db.Entry(person).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index", "Home");
