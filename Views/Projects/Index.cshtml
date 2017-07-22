@@ -1,18 +1,20 @@
-﻿@model IEnumerable<ATM.Models.Document>
-
+﻿@model IEnumerable<ATM.Models.Project>
 @{
-    ViewBag.Title = "سند ها";
+    ViewBag.Title = "پروژه ها";
 }
 
 <div class="index">
-    @Html.ActionLink("• سند ها", "Index", null, new { @class = "title" })
+    @Html.ActionLink("• پروژه ها", "Index", null, new { @class = "title" })
     <table>
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.Title)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Expire)
+                @Html.DisplayNameFor(model => model.Start)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.End)
             </th>
             <th></th>
         </tr>
@@ -24,7 +26,10 @@
                     @Html.DisplayFor(modelItem => item.Title)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Expire)
+                    @Html.DisplayFor(modelItem => item.DateDimension.DateKey)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateDimension1.DateKey)
                 </td>
                 <td>
                     @Html.ActionLink("مشاهده", "Details", new { id = item.Id })
@@ -34,5 +39,5 @@
             </tr>
         }
     </table>
-    @Html.ActionLink("سند جدید", "Create")
+    @Html.ActionLink("پروژه جدید", "Create")
 </div>

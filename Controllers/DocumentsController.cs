@@ -24,7 +24,7 @@ namespace ATM.Controllers
 
             int today = Convert.ToInt32(DateTime.Now.ToString("yyyyMMdd"));
             if (ControllerContext.IsChildAction)
-                return PartialView(documents.OrderByDescending(x => x.Expire).Where(x => x.Expire >= today).Take(5).ToList());
+                return PartialView(documents.OrderByDescending(x => x.Expire)/*.Where(x => x.Expire >= today)*/.Take(5).ToList());
             return View(documents.OrderByDescending(x => x.Submit).ToList());
         }
 

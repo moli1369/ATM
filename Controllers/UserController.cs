@@ -23,7 +23,9 @@ namespace ATM.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Person person = db.People.Find(id);
+            Person person = db.People
+                //.Where(x => x.Id == id).FirstOrDefault() ;
+                .Find(id);
             if (person == null)
             {
                 return HttpNotFound();

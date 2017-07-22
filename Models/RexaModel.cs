@@ -6,6 +6,26 @@ using System.Web;
 
 namespace ATM.Models
 {
+
+    public partial class Project
+    {
+        [Display(Name = "شناسه")]
+        public Guid Id { get; set; }
+
+        [StringLength(350)]
+        [Display(Name = "عنوان")]
+        public string Title { get; set; }
+
+        [Display(Name = "شروع")]
+        public int Start { get; set; }
+
+        [Display(Name = "پایان")]
+        public int End { get; set; }
+
+        [Display(Name = "مالک")]
+        public Guid OwnerId { get; set; }
+
+    }
     public class Login
     {
         [DataType(DataType.Text)]
@@ -35,12 +55,10 @@ namespace ATM.Models
         [Display(Name = "عنوان")]
         public string Title { get; set; }
 
-        [DataType(DataType.DateTime)]
         [Display(Name = "ثبت")]
         public int Submit { get; set; }
 
         [Display(Name = "اتمام")]
-        [DataType(DataType.DateTime)]
         public int? Expire { get; set; }
 
         public Guid PersonId { get; set; }
@@ -56,17 +74,18 @@ namespace ATM.Models
     }
     public partial class Person
     {
-        private Guid id;
-        public Guid Id
-        {
-            get { return id; }
-            set
-            {
-                if (id == null)
-                    id = Guid.NewGuid();
-                id = value;
-            }
-        }
+        //private Guid id;
+        //public Guid Id
+        //{
+        //    get { return id; }
+        //    set
+        //    {
+        //        if (id == null)
+        //            id = Guid.NewGuid();
+        //        id = value;
+        //    }
+        //}
+        public Guid Id { get; set; }
 
         [StringLength(50)]
         [Display(Name = "نام کاربری")]
@@ -91,7 +110,6 @@ namespace ATM.Models
 
         [Display(Name = "تصویر")]
         public Guid? PictureFileId { get; set; }
-
     }
 
     internal class RexaUniqueUsername : ValidationAttribute

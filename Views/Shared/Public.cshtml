@@ -8,4 +8,10 @@
 @Html.Action("MyProfile", "User")
 @Html.Action("Status", "User")
 @Html.Action("Index", "Documents")
+@Html.Action("Index", "Projects")
+
 @RenderBody()
+
+@section scripts{
+    @RenderSection("scripts", false)
+}

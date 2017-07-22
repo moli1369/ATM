@@ -22,12 +22,6 @@
         @Html.EditorFor(model => model.Expire)
         @Html.ValidationMessageFor(model => model.Expire, "", new { @class = "warning" })
 
-        @*
-            @Html.LabelFor(model => model.PersonId, "PersonId")
-            @Html.DropDownList("PersonId")
-            @Html.ValidationMessageFor(model => model.PersonId, "", new { @class = "warning" })
-        *@
-
         @Html.LabelFor(model => model.Body)
         @Html.EditorFor(model => model.Body)
         @Html.ValidationMessageFor(model => model.Body, "", new { @class = "warning" })
@@ -40,3 +34,16 @@
         <input type="submit" value="بساز" />
     }
 </div>
+
+@section scripts{
+    <script>
+            $(function () {
+                $("input[name='Submit'], input[name='Expire']").flatpickr(
+                    {
+                        enableTime: true,
+                        dateFormat: 'Ymd'
+                    }
+                );
+            });
+    </script>
+}

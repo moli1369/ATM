@@ -16,6 +16,7 @@ namespace ATM.Models
             Projects = new HashSet<Project>();
         }
 
+ 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Document> Documents { get; set; }
 

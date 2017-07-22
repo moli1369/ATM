@@ -14,16 +14,7 @@ namespace ATM.Models
             Tasks = new HashSet<Task>();
         }
 
-        public Guid Id { get; set; }
 
-        [StringLength(350)]
-        public string Title { get; set; }
-
-        public int Start { get; set; }
-
-        public int End { get; set; }
-
-        public Guid OwnerId { get; set; }
 
         public virtual DateDimension DateDimension { get; set; }
 

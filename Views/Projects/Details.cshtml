@@ -1,0 +1,50 @@
+﻿@model ATM.Models.Project
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Project</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DateDimension.DaySuffix)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateDimension.DaySuffix)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateDimension1.DaySuffix)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateDimension1.DaySuffix)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Person.Username)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Person.Username)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
