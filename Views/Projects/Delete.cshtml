@@ -1,56 +1,30 @@
 ﻿@model ATM.Models.Project
 
+
 @{
-    ViewBag.Title = "Delete";
+    ViewBag.Title = "حذف پروژه";
 }
 
-<h2>Delete</h2>
+<div class="delete">
+    <span class="title">• حذف پروژه</span>
 
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>Project</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.DateDimension.DaySuffix)
-        </dt>
+    <span class="simple-text">
+        @Html.DisplayFor(model => model.Title)
+    </span>
 
-        <dd>
-            @Html.DisplayFor(model => model.DateDimension.DaySuffix)
-        </dd>
+    @Html.DisplayNameFor(model => model.Start)
+    <span class="simple-text">
+        @Html.DisplayFor(model => model.Start)
+    </span>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.DateDimension1.DaySuffix)
-        </dt>
+    @Html.DisplayNameFor(model => model.End)
+    <span class="simple-text">
+        @Html.DisplayFor(model => model.End)
+    </span>
 
-        <dd>
-            @Html.DisplayFor(model => model.DateDimension1.DaySuffix)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Person.Username)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Person.Username)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Title)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Title)
-        </dd>
-
-    </dl>
-
-    @using (Html.BeginForm()) {
+    @using (Html.BeginForm())
+    {
         @Html.AntiForgeryToken()
-
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
-        </div>
+        <input type="submit" value="حذف" />
     }
 </div>

@@ -40,6 +40,8 @@ namespace ATM.Controllers
             {
                 return HttpNotFound();
             }
+            if (project.OwnerId != Guid.Parse(Session["UserId"].ToString()))
+                return new HttpStatusCodeResult(HttpStatusCode.Unauthorized);
             return View(project);
         }
 
@@ -57,8 +59,9 @@ namespace ATM.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Title,Start,End,OwnerId")] Project project)
+        public ActionResult Create([Bind(Include = "Id,Title,Start,End")] Project project)
         {
+            project.OwnerId = Guid.Parse(Session["UserId"].ToString());
             if (ModelState.IsValid)
             {
                 project.Id = Guid.NewGuid();
@@ -85,6 +88,9 @@ namespace ATM.Controllers
             {
                 return HttpNotFound();
             }
+            if (project.OwnerId != Guid.Parse(Session["UserId"].ToString()))
+                return new HttpStatusCodeResult(HttpStatusCode.Unauthorized);
+
             ViewBag.Start = new SelectList(db.DateDimensions, "DateKey", "DaySuffix", project.Start);
             ViewBag.End = new SelectList(db.DateDimensions, "DateKey", "DaySuffix", project.End);
             ViewBag.OwnerId = new SelectList(db.People, "Id", "Username", project.OwnerId);
@@ -96,7 +102,7 @@ namespace ATM.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Title,Start,End,OwnerId")] Project project)
+        public ActionResult Edit([Bind(Include = "Id,Title,Start,End")] Project project)
         {
             if (ModelState.IsValid)
             {
@@ -122,6 +128,9 @@ namespace ATM.Controllers
             {
                 return HttpNotFound();
             }
+            if (project.OwnerId != Guid.Parse(Session["UserId"].ToString()))
+                return new HttpStatusCodeResult(HttpStatusCode.Unauthorized);
+
             return View(project);
         }
 
@@ -131,6 +140,8 @@ namespace ATM.Controllers
         public ActionResult DeleteConfirmed(Guid id)
         {
             Project project = db.Projects.Find(id);
+            if (project.OwnerId != Guid.Parse(Session["UserId"].ToString()))
+                return new HttpStatusCodeResult(HttpStatusCode.Unauthorized);
             db.Projects.Remove(project);
             db.SaveChanges();
             return RedirectToAction("Index");

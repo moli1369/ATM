@@ -14,8 +14,6 @@ namespace ATM.Models
             Tasks = new HashSet<Task>();
         }
 
-
-
         public virtual DateDimension DateDimension { get; set; }
 
         public virtual DateDimension DateDimension1 { get; set; }
