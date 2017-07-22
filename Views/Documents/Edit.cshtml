@@ -38,3 +38,15 @@
         <input type="submit" value="ذخیره" class="btn btn-default" />
     }
 </div>
+@section scripts{
+    <script>
+            $(function () {
+                $("input[name='Submit'], input[name='Expire']").flatpickr(
+                    {
+                        enableTime: true,
+                        dateFormat: 'Ymd'
+                    }
+                );
+            });
+    </script>
+}
