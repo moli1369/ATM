@@ -5,21 +5,44 @@ using System.Linq;
 using System.Net;
 using System.Web.Mvc;
 using ATM.Models;
+using System.Collections.Generic;
 
 namespace ATM.Controllers
 {
+    [Gordibute]
     public class TasksController : Controller
     {
         private MainModel db = new MainModel();
 
         // GET: Tasks
-        public ActionResult Index(Guid Id)
+        public ActionResult Index(Guid? Id)
         {
-            var tasks = db.Tasks.Where(x => x.ProjectId == Id)
-                //.Include(t => t.DateDimension)
-                //.Include(t => t.DateDimension1)
-                //.Include(t => t.Project)
-                ;
+            var UserId = Guid.Parse(Session["UserId"].ToString());
+
+            var query = (from task in db.Tasks
+
+                         join project in db.Projects
+                         on task.ProjectId equals project.Id
+
+                         join person in db.People
+                         on project.OwnerId equals person.Id
+
+                         where person.Id == UserId
+
+                         select new { task, PersonId = person.Id }
+                     );
+
+            if (Id != null)
+            {
+                query = query.Where(x => x.task.ProjectId == Id);
+            }
+
+
+            IEnumerable<Task> tasks;
+            tasks = query.Select(x => x.task);
+
+            if (ControllerContext.IsChildAction)
+                return PartialView(tasks.ToList());
             return View(tasks.ToList());
         }
 
